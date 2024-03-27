@@ -73,8 +73,14 @@ router
 
 
 router
-    .get('/posts/create', [PostController, 'create']).as('post.create').use(middleware.auth())
+    .get('/posts/create', [PostController, 'create'])
+    .as('post.create')
+    .use(middleware.auth())
 
+
+router
+    .post('/posts/create', [PostController, 'store'])
+    .use(middleware.auth())
 
 
 

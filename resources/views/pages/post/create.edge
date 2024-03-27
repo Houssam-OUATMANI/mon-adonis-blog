@@ -5,9 +5,9 @@
 
 <form action="" method="post" class="w-75 mx-auto p-3 bg-light rounded" enctype="multipart/form-data">
     {{csrfField()}}
-    @!component('components/input', { name : 'title', label : 'Titre' })
+    @!component('components/input', { name : 'title', label : 'Titre', value : old('title') })
     @!component('components/input', { name : 'thumbnail', label : 'Miniature', type : 'file' })
-    @!component('components/input', { name : 'content', label : 'Contenu', type : 'textarea' })
+    @!component('components/input', { name : 'content', label : 'Contenu', type : 'textarea', value : old('content') })
     <button class="btn btn-outline-info mt-2" type="submit">{{title}}</button>
 </form>
 
