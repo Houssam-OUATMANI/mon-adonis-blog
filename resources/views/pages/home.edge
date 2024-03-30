@@ -1,5 +1,37 @@
-@let(title = 'My blog')
+@let(title = 'Nos publications')
 @include('partials/header')
-<h1> It Works! </h1>
+
+<div class="container">
+    <h1 class="text-center my-2">{{title}}</h1>
+
+    <div class="d-flex justify-content-between flex-wrap">
+
+        @each(post in posts)
+        <div class="card mt-2" style="width: 18rem;">
+            <img src="{{post.thumbnail}}" class="card-img-top" alt="{{post.title}}">
+            <div class="card-body">
+              <h5 title="{{post.title}}" class="card-title">{{truncate(post.title, 25)}}</h5>
+              <p class="card-text">Ecrit par : {{post.user.username}} </p>
+              <a href="#" class="btn btn-primary">Lire l'article</a>
+            </div>
+          </div>
+        @end
+    </div>
+
+    @if(posts.hasPages)
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item {{posts.currentPage === posts.firstPage ? 'disabled' : ''}}"><a class="page-link" href="{{posts.getPreviousPageUrl()}}">Précedent</a></li>
+          @each(anchor in posts.getUrlsForRange(1, posts.lastPage))
+          <li class="page-item {{anchor.isActive ? 'active' : ''}}"><a class="page-link" href="{{anchor.url}}">{{anchor.page}}</a></li>
+            
+          @end
+          
+          <li class="page-item {{!posts.hasMorePages ? 'disabled' : ''}}"><a class="page-link" href="{{posts.getNextPageUrl()}}">Suivant</a></li>
+        </ul>
+      </nav>
+      @end
+
+</div>
 @include('partials/footer')
 
