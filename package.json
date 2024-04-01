@@ -63,8 +63,11 @@
     "better-sqlite3": "^9.4.3",
     "bootstrap": "^5.3.3",
     "edge.js": "^6.0.1",
+    "highlight.js": "^11.9.0",
     "jdenticon": "^3.2.0",
     "luxon": "^3.4.4",
+    "marked": "^12.0.1",
+    "marked-highlight": "^2.1.1",
     "reflect-metadata": "^0.2.1"
   },
   "eslintConfig": {
