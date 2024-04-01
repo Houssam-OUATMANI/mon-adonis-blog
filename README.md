@@ -8,10 +8,10 @@ L'application est construite avec Adonis.js, un framework Node.js robuste et ext
 
 ## Installation
 
-1. Clonez ce dépôt sur votre machine locale. ```bash git clone https://github.com/Houssam-OUATMANI/mon-adonis-blog.git mon-blog```
-2. Accédez au répertoire de l'application : ```bash cd mon-blog```
-3. Installez les dépendances: ```bash npm i```
-4. Configurez l'application en créant un fichier .env basé sur .env.example et en le personnalisant selon vos besoins ```bash cp .env.example .env```
-5. Générez une clé secrète pour l'application. ```bash node ace generate:key```
-6. Migrez la base de données. ```bash node ace migration:run```
-7. Lancez l'application en mode développement :```bash npm run dev```
+1. Clonez ce dépôt sur votre machine locale. ``` git clone https://github.com/Houssam-OUATMANI/mon-adonis-blog.git mon-blog ```
+2. Accédez au répertoire de l'application : ``` cd mon-blog```
+3. Installez les dépendances: ``` npm i ```
+4. Configurez l'application en créant un fichier .env basé sur .env.example et en le personnalisant selon vos besoins ``` cp .env.example .env ```
+5. Générez une clé secrète pour l'application. ``` node ace generate:key ```
+6. Migrez la base de données. ``` node ace migration:run ```
+7. Lancez l'application en mode développement :``` npm run dev ```
