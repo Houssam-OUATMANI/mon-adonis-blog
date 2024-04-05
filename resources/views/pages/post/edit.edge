@@ -1,0 +1,22 @@
+@let(title = 'Modifier du contenu')
+@include('partials/header')
+
+<h1 class="text-center">{{title}}</h1>
+
+<form action="{{route('post.update', {id : post.id})}}?_method=PUT" method="post" class="w-75 mx-auto p-3 bg-light rounded" enctype="multipart/form-data">
+    {{csrfField()}}
+    @!component('components/input', { name : 'title', label : 'Titre', value : post.title })
+    @!component('components/input', { name : 'thumbnail', label : 'Miniature', type : 'file' })
+    @!component('components/input', { name : 'content', label : 'Contenu', type : 'textarea', value : post.content })
+    <button class="btn btn-outline-info mt-2" type="submit">{{title}}</button>
+</form>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
+<script>
+    new SimpleMDE({element : document.querySelector("#content")})
+</script>
+
+@include('partials/footer')

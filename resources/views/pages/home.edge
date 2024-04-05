@@ -12,7 +12,14 @@
             <div class="card-body">
               <h5 title="{{post.title}}" class="card-title">{{truncate(post.title, 25)}}</h5>
               <p class="card-text">Ecrit par : {{post.user.username}} </p>
-              <a href="{{route('post.show', {slug : post.slug, id :post.id})}}" class="btn btn-primary">Lire l'article</a>
+              <a href="{{route('post.show', {slug : post.slug, id :post.id})}}" class="btn btn-primary w-100">Lire l'article</a>
+              <div class="d-flex mt-3 justify-content-between">
+                <a href="{{route('post.edit', {id :post.id})}}" class="btn btn-outline-warning ">Modifier l'article</a>
+                <form action="{{route('post.delete', {id: post.id})}}?_method=DELETE" method="post">
+                  {{ csrfField() }}
+                  <button class="btn btn-outline-danger" type="submit">Supprimer</button>
+                </form>
+              </div>
             </div>
           </div>
         @end
