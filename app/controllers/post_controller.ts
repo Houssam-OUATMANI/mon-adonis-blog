@@ -8,6 +8,8 @@ import { Marked } from "marked"
 import { markedHighlight } from "marked-highlight";
 import hljs from 'highlight.js';
 import { unlink } from 'fs/promises'
+import { alterPost } from '#abilities/main'
+import PostPolicy from '#policies/post_policy'
 
 @inject()
 export default class PostController {
@@ -87,19 +89,27 @@ export default class PostController {
   /**
    * Edit individual record
    */
-  async edit({ params, view }: HttpContext) {
+  async edit({ params, view, bouncer, response, session }: HttpContext) {
     const { id } = params
     const post = await Post.findByOrFail('id', id)
+    if(await bouncer.with(PostPolicy).denies('alterPost', post)) {
+      session.flash('error', 'Action interdite')
+      return response.redirect().back()
+    }
     return view.render('pages/post/edit', { post })
   }
 
   /**
    * Handle form submission for the edit action
    */
-  async update({ params, request, session, response }: HttpContext) {
+  async update({ params, request, session, response, bouncer }: HttpContext) {
     const { id } = params
     const { content, thumbnail, title } = await request.validateUsing(updatePostValidator)
     const post = await Post.findByOrFail('id', id)
+    if(await bouncer.with(PostPolicy).denies('alterPost', post)) {
+      session.flash('error', 'Action interdite')
+      return response.redirect().back()
+    }
     const slug = post.title !== title && stringHelpers.slug(title)
     if (thumbnail) {
       await unlink(`public/${post.thumbnail}`)
@@ -119,9 +129,13 @@ export default class PostController {
   /**
    * Delete record
    */
-  async destroy({ params , session, response}: HttpContext) {
+  async destroy({ params , session, response, bouncer}: HttpContext) {
     const { id } = params
     const post = await Post.findByOrFail('id', id)
+    if(await bouncer.with(PostPolicy).denies('alterPost', post)) {
+      session.flash('error', 'Action interdite')
+      return response.redirect().back()
+    }
     await unlink(`public/${post.thumbnail}`)
     await post.delete()
 

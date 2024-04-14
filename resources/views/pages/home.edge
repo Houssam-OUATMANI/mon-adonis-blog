@@ -26,7 +26,7 @@
     </div>
 
     @if(posts.hasPages)
-    <nav aria-label="Page navigation example">
+    <nav aria-label="Page navigation example" class="my-5">
         <ul class="pagination">
           <li class="page-item {{posts.currentPage === posts.firstPage ? 'disabled' : ''}}"><a class="page-link" href="{{posts.getPreviousPageUrl()}}">Précedent</a></li>
           @each(anchor in posts.getUrlsForRange(1, posts.lastPage))
