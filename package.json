@@ -69,7 +69,8 @@
     "luxon": "^3.4.4",
     "marked": "^12.0.1",
     "marked-highlight": "^2.1.1",
-    "reflect-metadata": "^0.2.1"
+    "reflect-metadata": "^0.2.1",
+    "unpoly": "^3.7.3"
   },
   "eslintConfig": {
     "extends": "@adonisjs/eslint-config/app"

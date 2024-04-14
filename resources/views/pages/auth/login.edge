@@ -3,7 +3,7 @@
 
 <h1 class="text-center">{{title}}</h1>
 
-<form action="" method="post" class="w-75 mx-auto p-3 bg-light rounded">
+<form action="{{route('auth.handleLogin')}}" up-target=".main, .navbar" method="post" class="w-75 mx-auto p-3 bg-light rounded">
     {{csrfField()}}
     @!component('components/input', { name : 'email', label : 'email', type : 'email'})
     @!component('components/input', { name : 'password', label : 'Mot de passe', type : 'password' })

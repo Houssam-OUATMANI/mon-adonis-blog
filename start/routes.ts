@@ -35,6 +35,7 @@ router
 router
     .post('/login', [AuthController, 'handleLogin'])
     .use(middleware.guest())
+    .as('auth.handleLogin')
 
 
 router
